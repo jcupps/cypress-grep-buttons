@@ -4,13 +4,14 @@ const warningElId = 'grep-active-warning';
 
 function removeWarning() {
   const { document } = window.top;
-  document.removeChild(document.getElementById(warningElId));
+  document.getElementById(warningElId).remove();
 }
 
 function addWarning() {
   const { document } = window.top;
 
   const warning = document.createElement('div');
+  warning.id = warningElId;
   warning.textContent = `Showing only tests/suites containing this text: "${window.top.activeCyGrep}"`;
   warning.style.background = '#ffeeb0';
   warning.style.color = '#8f7000';
@@ -65,12 +66,13 @@ export default function addGrepButtons() {
           window.top.Cypress.grep();
           window.top.activeCyGrep = null;
           removeWarning();
-          console.info('clearing grep');
+          console.log('clearing grep');
         } else {
           window.top.Cypress.grep(testName);
           window.top.activeCyGrep = testName;
           addWarning();
-          console.info(`grepping tests to "${testName}"`);
+          console.log(`grepping tests to "${testName}"`);
+          console.log(`grepped in spec: ${window.top.Cypress.spec.name}`);
         }
       };
 
