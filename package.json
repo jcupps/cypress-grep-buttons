@@ -1,5 +1,5 @@
 {
-  "name": "jcupps/cypress-grep-buttons",
+  "name": "cypress-grep-buttons",
   "description": "Adds buttons to each test and suite in the Cypress test runner UI to grep the output to that test/suite name",
   "version": "0.1.0",
   "license": "MIT",
